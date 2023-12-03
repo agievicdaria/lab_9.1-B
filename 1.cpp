@@ -111,9 +111,10 @@ void PrintTable(const Student *students, const int numberOfStudents)
     cout << endl;
 }
 
-void PrintExcellentStudents(const Student *students, int numberOfStudents)
+string printExcellentStudents(const Student *students, int numberOfStudents)
 {
-    cout << "Студенти, які вчаться на 'відмінно':\n";
+    string excellentStudents;
+
     for (int i = 0; i < numberOfStudents; ++i)
     {
         if (students[i].physicsGrade == 5.0 &&
@@ -125,6 +126,8 @@ void PrintExcellentStudents(const Student *students, int numberOfStudents)
             cout << students[i].lastName << endl;
         }
     }
+
+    return excellentStudents;
 }
 
 double CalculatePercentageOfStudents(const Student *students, int numberOfStudents)
@@ -157,7 +160,7 @@ int main()
     Create(students, numberOfStudents);
     PrintTable(students, numberOfStudents);
 
-    PrintExcellentStudents(students, numberOfStudents);
+    cout << "Студенти, які вчаться на 'відмінно':\n" << printExcellentStudents(students, numberOfStudents);
 
     double percentageHighGrades = CalculatePercentageOfStudents(students, numberOfStudents);
     cout << "Процент студентів із середнім балом більше 4,5: " << fixed << setprecision(2) << percentageHighGrades << "%" << endl;
